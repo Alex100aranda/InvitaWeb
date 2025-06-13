@@ -32,10 +32,12 @@ body {
   flex-wrap: wrap;
 }
 
+
 .logo {
   font-weight: 600;
   font-size: 1.5rem;
   color: #e91e63;
+  margin: 0; /* elimina márgenes extra */
 }
 
 .nav-list {
@@ -59,8 +61,14 @@ body {
   display: none;
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
+   margin-left: auto; /* empuja el botón hacia la derecha */
+  display: block; /* asegúrate de que esté visible */
+  margin-left: auto;
+  cursor: pointer;
 }
+
+
 
 /* Hero Section */
 .hero {
