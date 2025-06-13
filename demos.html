@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Demos de Invitaciones</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      color: #333;
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #e91e63;
+      margin-bottom: 2rem;
+    }
+
+    /* Acordeón Container */
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* Cada Card */
+    .card {
+      border: 2px solid #e91e63;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      background: #fff0f5;
+    }
+
+    /* Hover efecto */
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(233, 30, 99, 0.3);
+    }
+
+    /* Card header (visible siempre) */
+    .card-header {
+      padding: 1.5rem 2rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #e91e63;
+      user-select: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Icono flecha */
+    .card-header .arrow {
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    /* Card content (video) */
+    .card-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      background: white;
+      border-top: 1px solid #e91e63;
+    }
+
+    /* Cuando está abierto */
+    .card.active .card-content {
+      max-height: 500px; /* suficiente para video */
+      padding: 1rem 2rem 2rem;
+    }
+
+    /* Girar flecha cuando abierto */
+    .card.active .card-header .arrow {
+      transform: rotate(90deg);
+    }
+
+    /* Video estilos */
+    .card-content video {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      display: block;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+
+      .card-header {
+        font-size: 1.1rem;
+        padding: 1rem 1.5rem;
+      }
+
+      .card-content {
+        padding: 0.8rem 1.5rem 1.5rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Demos de Invitaciones</h1>
+
+  <div class="accordion">
+
+    <div class="card">
+      <div class="card-header">
+        Invitación Demo Boda
+        <span class="arrow">&#9654;</span>
+      </div>
+      <div class="card-content">
+        <video controls poster="img/poster-floral.jpg">
+          <source src="video.mp4" type="video/mp4" />
+          Tu navegador no soporta video HTML5.
+        </video>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        Invitación XV años
+        <span class="arrow">&#9654;</span>
+      </div>
+      <div class="card-content">
+        <video controls poster="img/poster-fiesta.jpg">
+          <source src="video2.mp4" type="video/mp4" />
+          Tu navegador no soporta video HTML5.
+        </video>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Código acordeón
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+      card.querySelector('.card-header').addEventListener('click', () => {
+        const isActive = card.classList.contains('active');
+        // Cerrar todas las cards abiertas
+        cards.forEach(c => c.classList.remove('active'));
+        // Abrir la que se clickeó (solo si no estaba activa)
+        if (!isActive) {
+          card.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
